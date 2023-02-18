@@ -1,8 +1,7 @@
-package grp17.clean_code;
+package grp17;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
 public class CleanCodeApplication {

@@ -1,0 +1,5 @@
+target
+.idea
+adapter/src/test
+application/src/test
+domain/src/test

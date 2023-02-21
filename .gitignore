@@ -3,3 +3,6 @@ target
 adapter/src/test
 application/src/test
 domain/src/test
+adapter/target
+application/target
+domain/target

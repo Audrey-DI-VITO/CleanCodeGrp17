@@ -14,7 +14,7 @@ public class PlayerServiceImpl implements PlayerService {
 
     @Override
     public Player registerPlayer(Player player) {
-        return new Player();
+        return new Player(player.getPseudo());
     }
 
     @Override

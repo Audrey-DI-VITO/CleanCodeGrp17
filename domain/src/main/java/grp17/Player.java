@@ -1,7 +1,5 @@
 package grp17;
 
-import grp17.enums.e_Rarity;
-
 public class Player {
     private String pseudo;
     private Deck deck;
@@ -14,8 +12,8 @@ public class Player {
         this.pseudo = pseudo;
         this.token = 4;
         this.deck = new Deck();
-        this.deck.insertCard(new Cards(new Hero("Vearn","slayer"), e_Rarity.LEGENDARY.toString()));
-        this.deck.getAllCards().get(0).getHero().setLevel(2);
+        //this.deck.insertCard(new Cards(new Hero("Vearn","slayer"), e_Rarity.LEGENDARY.toString()));
+        //this.deck.getAllCards().get(0).getHero().setLevel(2);
     }
 
 

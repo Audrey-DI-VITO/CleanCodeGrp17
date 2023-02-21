@@ -42,7 +42,6 @@ public class User {
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody Player p) {
         if(p.getPseudo() != null) {
-            System.out.println("test : "+userRepo.findByPseudo(p.getPseudo()));
             if(userRepo.findByPseudo(p.getPseudo()).size() == 0) {
                 PlayerDB playerDB = new PlayerDB(p.getPseudo());
                 PlayerDB player = userRepo.save(playerDB);

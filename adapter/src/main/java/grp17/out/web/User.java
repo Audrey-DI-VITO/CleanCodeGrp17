@@ -4,16 +4,26 @@ import grp17.Cards;
 import grp17.Deck;
 import grp17.Hero;
 import grp17.Player;
+import grp17.in.persistance.DeckDB;
 import grp17.in.persistance.PlayerDB;
 import grp17.port.in.PlayerService;
+import grp17.repositories.DeckRepo;
 import grp17.repositories.UserRepo;
 import grp17.service.PlayerServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
+
+import java.util.ArrayList;
+import java.util.List;
 
 // @RequestBody -> body
 // @PathVariable -> /{id}
@@ -24,12 +34,28 @@ import org.springframework.web.servlet.View;
 public class User {
     PlayerService playerService = new PlayerServiceImpl();
     @Autowired
-    UserRepo userRepository;
+    UserRepo userRepo;
+
+    @Autowired
+    DeckRepo deckRepo;
 
     @PostMapping("/register")
-    public void register(@RequestBody Player p) {
-        playerService.registerPlayer(p);
-        userRepository.save(new PlayerDB(p.getPseudo()));
+    public ResponseEntity register(@RequestBody Player p) {
+        if(p.getPseudo() != null) {
+            System.out.println("test : "+userRepo.findByPseudo(p.getPseudo()));
+            if(userRepo.findByPseudo(p.getPseudo()).size() == 0) {
+                PlayerDB playerDB = new PlayerDB(p.getPseudo());
+                PlayerDB player = userRepo.save(playerDB);
+                DeckDB deckDB = new DeckDB();
+                deckDB.setPlayer(player);
+                deckRepo.save(deckDB);
+            } else {
+                return ResponseEntity.status(HttpStatus.CONFLICT).body("Il existe déjà un joueur avec ce pseudo");
+            }
+        } else {
+            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body("Vous devez obligatoirement renseigner le champs pseudo pour vous inscrire");
+        }
+        return ResponseEntity.ok("Votre compte "+p.getPseudo()+" a bien été créé");
     }
 
     @PostMapping(value="/login", consumes = "application/json", produces = "application/json")

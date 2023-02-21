@@ -1,5 +1,6 @@
 package grp17.in.persistance;
 
+import grp17.Deck;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 
@@ -8,22 +9,25 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @Table(name = "deck")
-public class DeckDB {
+public class DeckDB extends Deck {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @GeneratedValue(strategy= GenerationType.IDENTITY, generator = "native")
+    private Long id;
 
-    @ManyToMany(cascade = CascadeType.ALL, targetEntity = DeckDB.class)
-    @JoinColumn(name = "id_cards")
+    @ManyToOne
+    @JoinColumn(name = "player_id")
+    private PlayerDB player;
+
+    @OneToMany(cascade = CascadeType.ALL, targetEntity = DeckDB.class)
+    @JoinColumn(name = "id_cards", referencedColumnName = "id")
     private List<CardsDB> id_cards;
 
-
     // GETTERS AND SETTERS
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -33,6 +37,14 @@ public class DeckDB {
 
     public void setId_cards(List<CardsDB> id_cards) {
         this.id_cards = id_cards;
+    }
+
+    public PlayerDB getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(PlayerDB player) {
+        this.player = player;
     }
 }
 

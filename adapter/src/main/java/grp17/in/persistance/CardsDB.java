@@ -1,16 +1,15 @@
 package grp17.in.persistance;
 
+import grp17.Cards;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Entity
 @NoArgsConstructor
 @Table(name = "cards")
-public class CardsDB {
+public class CardsDB extends Cards {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY, generator = "native")
     private Long id;
 
     @Column(name = "name")

@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 public class PlayerDB extends Player {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY, generator = "native")
     private int id;
 
     @Column(name = "pseudo")
@@ -24,17 +24,13 @@ public class PlayerDB extends Player {
     @Column(name = "nbrVictory")
     private int nbrVictory;
 
-    @OneToMany(cascade = CascadeType.ALL, targetEntity = PlayerDB.class)
-    @JoinColumn(name = "id_deck")
-    private List<DeckDB> id_deck = new ArrayList<>();
+    @OneToMany(mappedBy = "player")
+    private List<DeckDB> id_deck;
 
     public PlayerDB(String pseudo) {
-        DeckDB deckDB = new DeckDB();
         this.pseudo = pseudo;
         this.token = 4;
-        this.id_deck.add(deckDB);
-        //this.deck.insertCard(new Cards(new Hero("Vearn","slayer"), e_Rarity.LEGENDARY.toString()));
-        //this.deck.getAllCards().get(0).getHero().setLevel(2);
+        this.id_deck = new ArrayList<>();
     }
 
 
@@ -76,7 +72,7 @@ public class PlayerDB extends Player {
         return id_deck;
     }
 
-    public void setId_deck(List<DeckDB> id_deck) {
-        this.id_deck = id_deck;
+    public void setId_deck(DeckDB id_deck) {
+        this.id_deck.add(id_deck);
     }
 }

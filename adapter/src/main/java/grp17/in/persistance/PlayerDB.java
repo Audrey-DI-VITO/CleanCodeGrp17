@@ -13,7 +13,7 @@ import java.util.List;
 public class PlayerDB extends Player {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY, generator = "native")
-    private int id;
+    private Long id;
 
     @Column(name = "pseudo")
     private String pseudo;
@@ -60,11 +60,11 @@ public class PlayerDB extends Player {
         this.nbrVictory = nbrVictory;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

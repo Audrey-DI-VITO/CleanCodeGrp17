@@ -101,4 +101,17 @@ public class Hero extends Cards {
     public void setSpeciality(Specialities speciality) {
         this.speciality = speciality;
     }
+
+    @Override
+    public String toString() {
+        return "Hero{" +
+                "name='" + name + '\'' +
+                ", pv=" + pv +
+                ", xp=" + xp +
+                ", power=" + power +
+                ", armor=" + armor +
+                ", speciality=" + speciality +
+                ", level=" + level +
+                '}';
+    }
 }

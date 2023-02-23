@@ -4,11 +4,14 @@ import grp17.Deck;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
-@NoArgsConstructor
 @Table(name = "deck")
+@NoArgsConstructor
 public class DeckDB extends Deck {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY, generator = "native")
@@ -18,9 +21,8 @@ public class DeckDB extends Deck {
     @JoinColumn(name = "player_id")
     private PlayerDB player;
 
-    @OneToMany(cascade = CascadeType.ALL, targetEntity = DeckDB.class)
-    @JoinColumn(name = "id_cards", referencedColumnName = "id")
-    private List<CardsDB> id_cards;
+    @OneToMany(mappedBy = "deck", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CardsDB> cards = new ArrayList<>();
 
     // GETTERS AND SETTERS
     public Long getId() {
@@ -31,20 +33,21 @@ public class DeckDB extends Deck {
         this.id = id;
     }
 
-    public List<CardsDB> getId_cards() {
-        return id_cards;
-    }
-
-    public void setId_cards(List<CardsDB> id_cards) {
-        this.id_cards = id_cards;
-    }
-
     public PlayerDB getPlayer() {
         return player;
     }
 
     public void setPlayer(PlayerDB player) {
         this.player = player;
+    }
+
+    @Override
+    public String toString() {
+        return "DeckDB{" +
+                "id=" + id +
+                ", player=" + player +
+                ", cards=" + cards +
+                '}';
     }
 }
 

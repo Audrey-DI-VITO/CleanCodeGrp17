@@ -3,10 +3,10 @@ package grp17;
 import java.util.ArrayList;
 
 public class Deck {
+
     private ArrayList<Cards> deck = new ArrayList<>();
 
-    public Deck(){
-    }
+    public Deck() {}
 
     public void insertCard(Cards card){
         this.deck.add(card);

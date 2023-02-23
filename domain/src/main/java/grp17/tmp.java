@@ -13,11 +13,11 @@ public class tmp {
         people.add(new Player("tutu"));
         people.add(new Player("tete"));
         people.add(new Player("titi"));
-        people.get(0).getDeck().insertCard(new Cards(new Hero("Dai","slayer"), e_Rarity.COMMON.toString()));
+        people.get(0).getDeck().insertCard(new Cards(new Hero("Dai","slayer"), e_Rarity.COMMON));
         people.get(0).getDeck().getAllCards().get(0).getHero().setLevel(2);
-        people.get(0).getDeck().insertCard(new Cards(new Hero("Pop","Tank"),e_Rarity.RARE.toString()));
-        people.get(0).getDeck().insertCard(new Cards(new Hero("Mam","Mage"),e_Rarity.LEGENDARY.toString()));
-        people.get(0).getDeck().insertCard(new Cards(new Hero("Avan","slayer"),e_Rarity.COMMON.toString()));
+        people.get(0).getDeck().insertCard(new Cards(new Hero("Pop","Tank"),e_Rarity.RARE));
+        people.get(0).getDeck().insertCard(new Cards(new Hero("Mam","Mage"),e_Rarity.LEGENDARY));
+        people.get(0).getDeck().insertCard(new Cards(new Hero("Avan","slayer"),e_Rarity.COMMON));
         people.get(0).getDeck().getAllCards().get(3).getHero().setLevel(3);
     }
 

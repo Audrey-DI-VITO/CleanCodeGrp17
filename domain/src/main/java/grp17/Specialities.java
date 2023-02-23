@@ -6,11 +6,11 @@ public class Specialities {
     int armor;
     int supPower;
     String againstWho;
-    String name;
+    String name_speciality;
 
     public Specialities() {}
-    public Specialities(String name,int pv, int power, int armor, int supPower, String againstWho) {
-        this.name=name;
+    public Specialities(String name, int pv, int power, int armor, int supPower, String againstWho) {
+        this.name_speciality=name;
         this.pv = pv;
         this.power = power;
         this.armor = armor;
@@ -59,8 +59,23 @@ public class Specialities {
         this.againstWho = againstWho;
     }
 
-    public String getName() {
-        return name;
+    public String getName_speciality() {
+        return name_speciality;
     }
 
+    public void setName_speciality(String name_speciality) {
+        this.name_speciality = name_speciality;
+    }
+
+    @Override
+    public String toString() {
+        return "Specialities{" +
+                "pv=" + pv +
+                ", power=" + power +
+                ", armor=" + armor +
+                ", supPower=" + supPower +
+                ", againstWho='" + againstWho + '\'' +
+                ", name_speciality='" + name_speciality + '\'' +
+                '}';
+    }
 }

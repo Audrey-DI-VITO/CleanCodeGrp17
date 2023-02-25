@@ -1,4 +1,4 @@
-package grp17.out.web;
+package grp17.in.persistance;
 
 import grp17.repositories.DeckRepo;
 import grp17.repositories.PlayerRepo;

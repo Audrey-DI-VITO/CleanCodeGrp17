@@ -1,13 +1,11 @@
-package grp17.out.web;
+package grp17.in.persistance;
 
-import grp17.Cards;
-import grp17.Player;
 import grp17.enums.e_Pack;
 import grp17.enums.e_Rarity;
-import grp17.in.persistance.AvailableCardsDB;
-import grp17.in.persistance.CardsDB;
-import grp17.in.persistance.DeckDB;
-import grp17.in.persistance.PlayerDB;
+import grp17.out.web.AvailableCardsDB;
+import grp17.out.web.CardsDB;
+import grp17.out.web.DeckDB;
+import grp17.out.web.PlayerDB;
 import grp17.repositories.AvailableCardsRepo;
 import grp17.repositories.CardsRepo;
 import grp17.repositories.DeckRepo;

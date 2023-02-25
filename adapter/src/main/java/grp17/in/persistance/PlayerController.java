@@ -1,31 +1,21 @@
-package grp17.out.web;
+package grp17.in.persistance;
 
-import grp17.Hero;
 import grp17.Player;
-import grp17.Specialities;
-import grp17.enums.e_Rarity;
-import grp17.in.persistance.AvailableCardsDB;
-import grp17.in.persistance.CardsDB;
-import grp17.in.persistance.DeckDB;
-import grp17.in.persistance.PlayerDB;
-import grp17.port.in.AvailableCardsService;
+import grp17.out.web.AvailableCardsDB;
+import grp17.out.web.CardsDB;
+import grp17.out.web.DeckDB;
+import grp17.out.web.PlayerDB;
 import grp17.port.in.PlayerService;
 import grp17.repositories.AvailableCardsRepo;
 import grp17.repositories.CardsRepo;
 import grp17.repositories.DeckRepo;
 import grp17.repositories.PlayerRepo;
-import grp17.service.AvailableCardsServiceImpl;
 import grp17.service.PlayerServiceImpl;
-import jakarta.servlet.http.HttpServletRequest;
-import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.View;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

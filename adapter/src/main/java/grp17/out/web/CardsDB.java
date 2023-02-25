@@ -1,7 +1,6 @@
-package grp17.in.persistance;
+package grp17.out.web;
 
 import grp17.Cards;
-import grp17.Specialities;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 

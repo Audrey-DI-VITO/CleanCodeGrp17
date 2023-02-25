@@ -1,7 +1,7 @@
 package grp17.repositories;
 
 import grp17.enums.e_Rarity;
-import grp17.in.persistance.AvailableCardsDB;
+import grp17.out.web.AvailableCardsDB;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

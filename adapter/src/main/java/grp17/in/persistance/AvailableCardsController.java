@@ -1,8 +1,8 @@
-package grp17.out.web;
+package grp17.in.persistance;
 
 import grp17.Hero;
 import grp17.Specialities;
-import grp17.in.persistance.AvailableCardsDB;
+import grp17.out.web.AvailableCardsDB;
 import grp17.repositories.AvailableCardsRepo;
 import grp17.service.AvailableCardsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

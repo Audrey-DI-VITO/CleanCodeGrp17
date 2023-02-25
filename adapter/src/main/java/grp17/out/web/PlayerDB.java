@@ -1,4 +1,4 @@
-package grp17.in.persistance;
+package grp17.out.web;
 
 import grp17.Player;
 import jakarta.persistence.*;

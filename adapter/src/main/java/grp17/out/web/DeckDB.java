@@ -1,13 +1,11 @@
-package grp17.in.persistance;
+package grp17.out.web;
 
 import grp17.Deck;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "deck")

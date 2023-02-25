@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface PlayerRepo extends JpaRepository<PlayerDB, Long> {
-    List<PlayerDB> findByPseudo(String pseudo);
+    PlayerDB findByPseudo(String pseudo);
 }

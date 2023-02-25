@@ -14,11 +14,7 @@ public class Player {
         this.pseudo = pseudo;
         this.token = 4;
         this.deck = new Deck();
-        this.deck.insertCard(new Cards(new Hero("Vearn","slayer"), e_Rarity.LEGENDARY));
-        //this.deck.getAllCards().get(0).getHero().setLevel(2);
     }
-
-
 
     // Getters et Setters
     public String getPseudo() {

@@ -4,6 +4,9 @@ import grp17.in.persistance.CardsDB;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface CardsRepo extends JpaRepository<CardsDB, Long> {
+    List<CardsDB> findByDeckId(Long deck_id);
 }

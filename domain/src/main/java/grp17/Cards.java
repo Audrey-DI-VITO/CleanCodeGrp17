@@ -19,17 +19,13 @@ public class Cards {
         this.rarity = rarity;
     }
 
-    public List<Cards> opening(e_Pack type) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    public e_Rarity opening(e_Pack type) {
         SecureRandom sRand = new SecureRandom();
-        List<Cards> cardsForPlayer = new ArrayList<>();
-
-        File directory = new File(System.getProperty("user.dir")+"/domain/src/main/java/grp17/specialities");
-        File[] files = directory.listFiles();
+        Cards card = new Cards();
 
         switch(type) {
             case SILVER: {
                 for(int i = 1; i <= 3; i++) {
-                    Cards card = new Cards();
                     int rand = sRand.nextInt(100) + 1;
                     if(rand >= 1 && rand <= 5) {
                         card.rarity = e_Rarity.LEGENDARY;
@@ -38,28 +34,12 @@ public class Cards {
                     } else {
                         card.rarity = e_Rarity.COMMON;
                     }
-                    Hero hero = new Hero();
-
-                    List<String> fileNames = new ArrayList<String>();
-                    for (File file : files) {
-                        if (file.isFile()) {
-                            fileNames.add(file.getName().split(".java")[0]);
-                        }
-                    }
-                    int index = sRand.nextInt(fileNames.size());
-                    Class<?> aClass = Class.forName("grp17.specialities."+fileNames.get(index).substring(0, 1).toUpperCase() + fileNames.get(index).substring(1));
-
-                    hero.setSpeciality((Specialities) aClass.getDeclaredConstructor().newInstance());
-                    hero.setLevel(1);
-                    card.setHero(hero);
-                    cardsForPlayer.add(card);
                 }
                 break;
             }
 
             case DIAMOND: {
                 for(int i = 1; i <= 5; i++) {
-                    Cards card = new Cards();
                     int rand = sRand.nextInt(100) + 1;
                     if(rand >= 1 && rand <= 15) {
                         card.rarity = e_Rarity.LEGENDARY;
@@ -68,21 +48,6 @@ public class Cards {
                     } else {
                         card.rarity = e_Rarity.COMMON;
                     }
-                    Hero hero = new Hero();
-
-                    List<String> fileNames = new ArrayList<String>();
-                    for (File file : files) {
-                        if (file.isFile()) {
-                            fileNames.add(file.getName().split(".java")[0]);
-                        }
-                    }
-                    int index = sRand.nextInt(fileNames.size());
-                    Class<?> aClass = Class.forName("grp17.specialities."+fileNames.get(index).substring(0, 1).toUpperCase() + fileNames.get(index).substring(1));
-
-                    hero.setSpeciality((Specialities) aClass.getDeclaredConstructor().newInstance());
-                    hero.setLevel(1);
-                    card.setHero(hero);
-                    cardsForPlayer.add(card);
                 }
                 break;
             }
@@ -92,7 +57,7 @@ public class Cards {
                 break;
             }
         }
-        return cardsForPlayer;
+        return card.rarity;
     }
 
 
@@ -113,11 +78,4 @@ public class Cards {
         this.rarity = rarity;
     }
 
-    @Override
-    public String toString() {
-        return "Cards{" +
-                "hero=" + hero +
-                ", rarity=" + rarity +
-                '}';
-    }
 }

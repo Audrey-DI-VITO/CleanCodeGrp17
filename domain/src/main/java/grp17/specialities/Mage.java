@@ -7,7 +7,4 @@ public class Mage extends Specialities {
         super("Mage",700, 150, 10, 25, "Assassin");
     }
 
-    public void test() {
-        System.out.println(super.getPv());
-    }
 }

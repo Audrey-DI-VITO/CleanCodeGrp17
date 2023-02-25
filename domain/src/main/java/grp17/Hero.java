@@ -2,30 +2,30 @@ package grp17;
 
 import grp17.enums.e_Specialities;
 import grp17.specialities.Mage;
-import grp17.specialities.Slayer;
+import grp17.specialities.Assassin;
 import grp17.specialities.Tank;
 
 import java.util.Objects;
 
 public class Hero extends Cards {
-    private String name;
-    private int pv;
-    private int xp = 0;
-    private int power;
-    private int armor;
+    private String name_hero;
+    private int pv_hero;
+    private int xp_hero = 0;
+    private int power_hero;
+    private int armor_hero;
     private Specialities speciality;
-    private int level = 1;
+    private int level_hero = 1;
 
     public Hero(){}
-    public Hero(String name, String speciality) {
-        this.name = name;
+    public Hero(String name_hero, String speciality) {
+        this.name_hero = name_hero;
         this.initSpeciality(speciality);
     }
 
     public void increaseStats() {
-        this.pv = (int) (speciality.pv * 1.1);
-        this.power = (int) (speciality.power * 1.1);
-        this.armor = (int) (speciality.armor * 1.1);
+        this.pv_hero = (int) (speciality.pv_spe * 1.1);
+        this.power_hero = (int) (speciality.power_spe * 1.1);
+        this.armor_hero = (int) (speciality.armor_spe * 1.1);
     }
 
     public void initSpeciality(String speciality) {
@@ -33,65 +33,65 @@ public class Hero extends Cards {
             this.speciality = new Tank();
         } else if(Objects.equals(speciality.toUpperCase(), e_Specialities.MAGE.toString())) {
             this.speciality = new Mage();
-        } else if(Objects.equals(speciality.toUpperCase(), e_Specialities.SLAYER.toString())) {
-            this.speciality = new Slayer();
+        } else if(Objects.equals(speciality.toUpperCase(), e_Specialities.ASSASSIN.toString())) {
+            this.speciality = new Assassin();
         }
         this.initStat();
     }
 
     public void initStat() {
-        this.pv = this.speciality.pv;
-        this.power = this.speciality.power;
-        this.armor = this.speciality.armor;
+        this.pv_hero = this.speciality.pv_spe;
+        this.power_hero = this.speciality.power_spe;
+        this.armor_hero = this.speciality.armor_spe;
     }
 
     // Getters et Setters
-    public void setLevel(int level) {
-        this.level = level;
+    public void setLevel_hero(int level_hero) {
+        this.level_hero = level_hero;
     }
 
-    public int getLevel() {
-        return this.level;
+    public int getLevel_hero() {
+        return this.level_hero;
     }
 
     public void setXP(int xp) {
-        this.xp = xp;
+        this.xp_hero = xp;
     }
 
     public int getXP() {
-        return this.xp;
+        return this.xp_hero;
     }
 
-    public String getName() {
-        return name;
+    public String getName_hero() {
+        return name_hero;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName_hero(String name_hero) {
+        this.name_hero = name_hero;
     }
 
-    public int getPv() {
-        return pv;
+    public int getPv_hero() {
+        return pv_hero;
     }
 
-    public void setPv(int pv) {
-        this.pv = pv;
+    public void setPv_hero(int pv_hero) {
+        this.pv_hero = pv_hero;
     }
 
-    public int getPower() {
-        return power;
+    public int getPower_hero() {
+        return power_hero;
     }
 
-    public void setPower(int power) {
-        this.power = power;
+    public void setPower_hero(int power_hero) {
+        this.power_hero = power_hero;
     }
 
-    public int getArmor() {
-        return armor;
+    public int getArmor_hero() {
+        return armor_hero;
     }
 
-    public void setArmor(int armor) {
-        this.armor = armor;
+    public void setArmor_hero(int armor_hero) {
+        this.armor_hero = armor_hero;
     }
 
     public Specialities getSpeciality() {
@@ -105,13 +105,13 @@ public class Hero extends Cards {
     @Override
     public String toString() {
         return "Hero{" +
-                "name='" + name + '\'' +
-                ", pv=" + pv +
-                ", xp=" + xp +
-                ", power=" + power +
-                ", armor=" + armor +
+                "name='" + name_hero + '\'' +
+                ", pv=" + pv_hero +
+                ", xp=" + xp_hero +
+                ", power=" + power_hero +
+                ", armor=" + armor_hero +
                 ", speciality=" + speciality +
-                ", level=" + level +
+                ", level=" + level_hero +
                 '}';
     }
 }

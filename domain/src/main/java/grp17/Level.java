@@ -19,11 +19,11 @@ public class Level extends Hero {
     }
 
     public void increaseLevel() {
-        if(super.getLevel() >= 100) {
+        if(super.getLevel_hero() >= 100) {
             System.out.println("Vous avez atteint le niveau maximum du jeu !");
             return;
         }
         super.increaseStats();
-        super.setLevel(super.getLevel() + 1);
+        super.setLevel_hero(super.getLevel_hero() + 1);
     }
 }

@@ -1,81 +1,79 @@
 package grp17;
 
 public class Specialities {
-    int pv;
-    int power;
-    int armor;
-    int supPower;
-    String againstWho;
-    String name_speciality;
+    int pv_spe;
+    int power_spe;
+    int armor_spe;
+    int supPower_spe;
+    String againstWhoSpe;
+    String name_spe;
 
     public Specialities() {}
-    public Specialities(String name, int pv, int power, int armor, int supPower, String againstWho) {
-        this.name_speciality=name;
-        this.pv = pv;
-        this.power = power;
-        this.armor = armor;
-        this.supPower = supPower;
-        this.againstWho = againstWho;
+    public Specialities(String name, int pv_spe, int power_spe, int armor_spe, int supPower_spe, String againstWhoSpe) {
+        this.name_spe =name;
+        this.pv_spe = pv_spe;
+        this.power_spe = power_spe;
+        this.armor_spe = armor_spe;
+        this.supPower_spe = supPower_spe;
+        this.againstWhoSpe = againstWhoSpe;
     }
 
     // Getters and Setters
-    public int getPv() {
-        return pv;
+    public int getPv_spe() {
+        return pv_spe;
     }
 
-    public void setPv(int pv) {
-        this.pv = pv;
+    public void setPv_spe(int pv) {
+        this.pv_spe = pv;
     }
 
-    public int getPower() {
-        return power;
+    public int getPower_spe() {
+        return power_spe;
     }
 
-    public void setPower(int power) {
-        this.power = power;
+    public void setPower_spe(int power) {
+        this.power_spe = power;
     }
 
-    public int getArmor() {
-        return armor;
+    public int getArmor_spe() {
+        return armor_spe;
     }
 
-    public void setArmor(int armor) {
-        this.armor = armor;
+    public void setArmor_spe(int armor) {
+        this.armor_spe = armor;
     }
 
-    public int getSupPower() {
-        return supPower;
+    public int getSupPower_spe() {
+        return supPower_spe;
     }
 
-    public void setSupPower(int supPower) {
-        this.supPower = supPower;
+    public void setSupPower_spe(int supPower) {
+        this.supPower_spe = supPower;
     }
 
-    public String getAgainstWho() {
-        return againstWho;
+    public String getAgainstWhoSpe() {
+        return againstWhoSpe;
     }
 
-    public void setAgainstWho(String againstWho) {
-        this.againstWho = againstWho;
+    public void setAgainstWhoSpe(String againstWho) {
+        this.againstWhoSpe = againstWho;
     }
 
-    public String getName_speciality() {
-        return name_speciality;
+    public String getName_spe() {
+        return name_spe;
     }
 
-    public void setName_speciality(String name_speciality) {
-        this.name_speciality = name_speciality;
+    public void setName_spe(String name_speciality) {
+        this.name_spe = name_speciality;
     }
 
     @Override
     public String toString() {
-        return "Specialities{" +
-                "pv=" + pv +
-                ", power=" + power +
-                ", armor=" + armor +
-                ", supPower=" + supPower +
-                ", againstWho='" + againstWho + '\'' +
-                ", name_speciality='" + name_speciality + '\'' +
-                '}';
+        return "pv : " + pv_spe +
+                ", power=" + power_spe +
+                ", armor=" + armor_spe +
+                ", supPower=" + supPower_spe +
+                ", againstWho='" + againstWhoSpe +
+                ", name_speciality=" + name_spe;
     }
 }

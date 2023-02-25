@@ -8,6 +8,6 @@ public class Tank extends Specialities {
     }
 
     public void test() {
-        System.out.println(super.getPv());
+        System.out.println(super.getPv_spe());
     }
 }

@@ -14,14 +14,14 @@ public class Deck {
 
     public void displayAllCard(){
         for (int i = 1; i < this.deck.size() + 1; i++) {
-            System.out.println(i + " :" + deck.get(i-1).getHero().getName());
+            System.out.println(i + " :" + deck.get(i-1).getHero().getName_hero());
         }
     }
 
     public void displayAuthorizedCards(int authorizedLevel){
         for (int i = 0; i < this.deck.size(); i++) {
-            if(this.deck.get(i).getHero().getLevel()>=authorizedLevel) {
-                System.out.println(i+1 + " :" + deck.get(i).getHero().getName()+" , lvl: "+deck.get(i).getHero().getLevel());
+            if(this.deck.get(i).getHero().getLevel_hero()>=authorizedLevel) {
+                System.out.println(i+1 + " :" + deck.get(i).getHero().getName_hero()+" , lvl: "+deck.get(i).getHero().getLevel_hero());
             }
         }
     }

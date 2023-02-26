@@ -3,11 +3,7 @@ package grp17;
 import grp17.enums.e_Pack;
 import grp17.enums.e_Rarity;
 
-import java.io.File;
-import java.lang.reflect.InvocationTargetException;
 import java.security.SecureRandom;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Cards {
     private Hero hero;

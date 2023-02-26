@@ -114,4 +114,14 @@ public class Hero extends Cards {
                 ", level=" + level_hero +
                 '}';
     }
+
+    public void levelUp() {
+        if(this.xp_hero >= 5) {
+            this.xp_hero = 0;
+            this.level_hero += 1;
+            this.pv_hero *= 1.1;
+            this.speciality.armor_spe *= 1.1;
+            this.speciality.power_spe *= 1.1;
+        }
+    }
 }

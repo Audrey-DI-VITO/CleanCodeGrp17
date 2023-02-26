@@ -8,12 +8,10 @@ import grp17.service.AvailableCardsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/heros")
@@ -36,5 +34,11 @@ public class AvailableCardsController {
         cardsAvailableRepo.save(avCardsDB);
 
         return new ResponseEntity<>("Carte ajoutée à la liste des cartes disponibles avec succès", HttpStatus.OK);
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<String> see_all_heros() {
+        List<AvailableCardsDB> lAvcDB = cardsAvailableRepo.findAll();
+        return ResponseEntity.ok(lAvcDB.toString());
     }
 }

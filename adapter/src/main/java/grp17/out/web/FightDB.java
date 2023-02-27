@@ -12,15 +12,15 @@ public class FightDB extends Fight {
     @GeneratedValue(strategy= GenerationType.IDENTITY, generator = "native")
     private Long id;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "attacker")
     private CardsDB attacker;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "defender")
     private CardsDB defender;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "winner")
     private CardsDB winner;
 

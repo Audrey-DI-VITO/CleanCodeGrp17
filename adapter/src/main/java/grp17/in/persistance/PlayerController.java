@@ -59,7 +59,6 @@ public class PlayerController {
         return ResponseEntity.ok("Votre compte "+p.getPseudo()+" a bien été créé");
     }
 
-
     // showDeck
     @GetMapping(value="/show_deck/{p}")
     public ResponseEntity show_deck(@PathVariable Player p) {
@@ -67,22 +66,18 @@ public class PlayerController {
         if (pdb == null) {
             return ResponseEntity.status(404).body("Ce joueur n'existe pas");
         }
-        Long deck_id = pdb.getId_deck().get(0).getId();
-        if (deck_id == null) {
+
+        if (pdb.getId_deck().size() < 1) {
             return ResponseEntity.status(404).body("Le joueur n'a pas de deck");
         }
+
+        Long deck_id = pdb.getId_deck().get(0).getId();
         List<CardsDB> cdbO = cardsRepo.findByDeckId(deck_id);
         List<String> finalRes = new ArrayList<>();
         for (CardsDB cardsDB : cdbO) {
-            Optional<AvailableCardsDB> avcDB = avcRepo.findById(cardsDB.getAvailable_card_id().getId());
-            finalRes.add(avcDB.get().toString().replaceAll("\\\\t", "\t").replaceAll("\\\\n", "\n"));
+            Optional<AvailableCardsDB> avcDB = avcRepo.findById(cardsDB.getAvc().getId());
+            finalRes.add("ID du Hero : "+cardsDB.getId()+", "+avcDB.get().toString().replaceAll("\\\\t", "\t").replaceAll("\\\\n", "\n"));
         }
         return ResponseEntity.status(200).body(finalRes);
-    }
-
-    // see opponents
-    @GetMapping(value="/see_opponents")
-    public void see_opponents() {
-
     }
 }

@@ -2,7 +2,6 @@ package grp17;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class Fight {
     private Player player;
@@ -59,10 +58,10 @@ public class Fight {
     }
 
     public void winXP() {
-        if(playerCard.getHero().getPv_hero() > opponentCard.getHero().getPv_hero()) {
+        if(playerCard.getHero().getPv_hero() > opponentCard.getHero().getPv_hero() && this.playerCard.getHero().getLevel_hero() < 100) {
             playerCard.getHero().setXP(playerCard.getHero().getXP() + 1);
             playerCard.getHero().levelUp();
-        } else {
+        } else if(playerCard.getHero().getPv_hero() < opponentCard.getHero().getPv_hero() && this.opponentCard.getHero().getLevel_hero() < 100) {
             opponentCard.getHero().setXP(opponentCard.getHero().getXP() + 1);
             opponentCard.getHero().levelUp();
         }
@@ -95,14 +94,10 @@ public class Fight {
     }
 
     public void setPlayerCard(Cards playerCard) {
-        System.out.println("player card : "+playerCard);
-        player = new Player("TEST");
         this.playerCard = playerCard;
     }
 
     public void setOpponentCard(Cards opponentCard) {
-        System.out.println("player card : "+playerCard);
-        opponent = new Player("TEST 3");
         this.opponentCard = opponentCard;
     }
 }

@@ -7,7 +7,4 @@ public class Tank extends Specialities {
         super("Tank",1000, 100, 20, 20, "Mage");
     }
 
-    public void test() {
-        System.out.println(super.getPv_spe());
-    }
 }

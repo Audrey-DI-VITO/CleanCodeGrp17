@@ -27,8 +27,9 @@ public class AvailableCardsController {
 
         Hero h2 = avcService.addCard(hero);
 
-        avCardsDB.setSpecialities((Specialities) Class.forName("grp17.specialities."+h2.getSpeciality()
-                .getName_spe()).getDeclaredConstructor().newInstance());
+        Specialities spe = avcService.setSpeByRarity(h2);
+
+        avCardsDB.setSpecialities(spe);
         avCardsDB.setRarity(h2.getRarity());
         avCardsDB.setName_hero(hero.getName_hero());
         cardsAvailableRepo.save(avCardsDB);

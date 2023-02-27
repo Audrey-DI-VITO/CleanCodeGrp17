@@ -1,5 +1,6 @@
 package grp17.out.web;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import grp17.Player;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
@@ -24,6 +25,7 @@ public class PlayerDB extends Player {
     @Column(name = "nbrVictory")
     private int nbrVictory;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "player")
     private List<DeckDB> id_deck;
 

@@ -18,7 +18,13 @@ public class CardsDB extends Cards {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "available_card_id")
-    private AvailableCardsDB available_card_id;
+    private AvailableCardsDB avc;
+
+    @Column
+    private int xp_hero = 0;
+
+    @Column
+    private int level_hero = 1;
 
     public Long getId() {
         return id;
@@ -32,11 +38,27 @@ public class CardsDB extends Cards {
         this.deck = deck;
     }
 
-    public AvailableCardsDB getAvailable_card_id() {
-        return available_card_id;
+    public AvailableCardsDB getAvc() {
+        return avc;
     }
 
-    public void setAvailable_card_id(AvailableCardsDB available_card_id) {
-        this.available_card_id = available_card_id;
+    public void setAvc(AvailableCardsDB available_card_id) {
+        this.avc = available_card_id;
+    }
+
+    public int getXp_hero() {
+        return xp_hero;
+    }
+
+    public void setXp_hero(int xp_hero) {
+        this.xp_hero = xp_hero;
+    }
+
+    public int getLevel_hero() {
+        return level_hero;
+    }
+
+    public void setLevel_hero(int level_hero) {
+        this.level_hero = level_hero;
     }
 }

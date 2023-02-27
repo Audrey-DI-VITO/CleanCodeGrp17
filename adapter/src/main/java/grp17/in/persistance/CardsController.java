@@ -40,42 +40,12 @@ public class CardsController {
         List<String> lCardDB = new ArrayList<>();
         if(pack_type.equals(e_Pack.DIAMOND.name().toLowerCase())) {
             for(int i = 0; i < 5; i++) {
-                CardsDB cardsDB = new CardsDB();
-                e_Rarity rarity_card = cardsDB.opening(e_Pack.valueOf(pack_type.toUpperCase()));
-
-                List<AvailableCardsDB> lAvcDB = availableCardsRepo.findByRarity(rarity_card);
-
-                PlayerDB playerDB = playerRepo.findByPseudo(p.getPseudo());
-                DeckDB deckDB = new DeckDB();
-                deckDB.setId(playerDB.getId_deck().get(0).getId());
-
-                SecureRandom sRand = new SecureRandom();
-
-                int selectedCard = sRand.nextInt(lAvcDB.size());
-                cardsDB.setAvailable_card_id(lAvcDB.get(selectedCard));
-                lCardDB.add(lAvcDB.get(selectedCard).toString());
-                cardsDB.setDeck(deckDB);
-                cardsRepo.save(cardsDB);
+                this.saveCardInDB(pack_type, lCardDB, pDB);
             }
             pDB.setToken(pDB.getToken() - 2);
         } else if(pack_type.equals(e_Pack.SILVER.toString().toLowerCase())) {
             for(int i = 0; i < 2; i++) {
-                CardsDB cardsDB = new CardsDB();
-                e_Rarity rarity_card = cardsDB.opening(e_Pack.valueOf(pack_type.toUpperCase()));
-
-                List<AvailableCardsDB> lAvcDB = availableCardsRepo.findByRarity(rarity_card);
-
-                PlayerDB playerDB = playerRepo.findByPseudo(p.getPseudo());
-                DeckDB deckDB = new DeckDB();
-                deckDB.setId(playerDB.getId_deck().get(0).getId());
-
-                SecureRandom sRand = new SecureRandom();
-
-                int selectedCard = sRand.nextInt(lAvcDB.size());
-                cardsDB.setAvailable_card_id(lAvcDB.get(selectedCard));
-                lCardDB.add(lAvcDB.get(selectedCard).toString());
-                cardsDB.setDeck(deckDB);
-                cardsRepo.save(cardsDB);
+                this.saveCardInDB(pack_type, lCardDB, pDB);
             }
             pDB.setToken(pDB.getToken() - 1);
         }
@@ -86,5 +56,24 @@ public class CardsController {
         }
 
         return ResponseEntity.ok("Vous n'avez pas assez de jetons pour ouvrir un pack.");
+    }
+
+    private void saveCardInDB(String pack_type, List<String> lCardDB, PlayerDB p) {
+        CardsDB cardsDB = new CardsDB();
+        e_Rarity rarity_card = cardsDB.opening(e_Pack.valueOf(pack_type.toUpperCase()));
+
+        List<AvailableCardsDB> lAvcDB = availableCardsRepo.findByRarity(rarity_card);
+
+        PlayerDB playerDB = playerRepo.findByPseudo(p.getPseudo());
+        DeckDB deckDB = new DeckDB();
+        deckDB.setId(playerDB.getId_deck().get(0).getId());
+
+        SecureRandom sRand = new SecureRandom();
+
+        int selectedCard = sRand.nextInt(lAvcDB.size());
+        cardsDB.setAvc(lAvcDB.get(selectedCard));
+        lCardDB.add(lAvcDB.get(selectedCard).toString());
+        cardsDB.setDeck(deckDB);
+        cardsRepo.save(cardsDB);
     }
 }

@@ -5,12 +5,10 @@ import grp17.out.web.AvailableCardsDB;
 import grp17.out.web.CardsDB;
 import grp17.out.web.DeckDB;
 import grp17.out.web.PlayerDB;
-import grp17.port.in.PlayerService;
 import grp17.repositories.AvailableCardsRepo;
 import grp17.repositories.CardsRepo;
 import grp17.repositories.DeckRepo;
 import grp17.repositories.PlayerRepo;
-import grp17.service.PlayerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +25,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/player")
 public class PlayerController {
-    PlayerService playerService = new PlayerServiceImpl();
 
     @Autowired
     PlayerRepo playerRepo;

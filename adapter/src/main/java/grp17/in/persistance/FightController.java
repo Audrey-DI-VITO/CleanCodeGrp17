@@ -61,7 +61,6 @@ public class FightController {
         f.setOpponent(playerRepo.findById(deckRepo.findById(idDeckDB).get().getPlayer().getId()).get());
         f.setPlayerCard(card);
         f.setOpponentCard(card2);
-
         return ResponseEntity.ok(f.battle());
     }
 

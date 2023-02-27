@@ -30,19 +30,19 @@ public class Hero extends Cards {
 
     public void initSpeciality(String speciality) {
         if(Objects.equals(speciality.toUpperCase(), e_Specialities.TANK.toString())) {
-            this.speciality = new Tank();
+            this.setSpeciality(new Tank());
         } else if(Objects.equals(speciality.toUpperCase(), e_Specialities.MAGE.toString())) {
-            this.speciality = new Mage();
+            this.setSpeciality(new Mage());
         } else if(Objects.equals(speciality.toUpperCase(), e_Specialities.ASSASSIN.toString())) {
-            this.speciality = new Assassin();
+            this.setSpeciality(new Assassin());
         }
         this.initStat();
     }
 
     public void initStat() {
-        this.pv_hero = this.speciality.pv_spe;
-        this.power_hero = this.speciality.power_spe;
-        this.armor_hero = this.speciality.armor_spe;
+        this.pv_hero = this.getSpeciality().getPv_spe();
+        this.power_hero = this.getSpeciality().getPower_spe();
+        this.armor_hero = this.getSpeciality().getArmor_spe();
     }
 
     // Getters et Setters

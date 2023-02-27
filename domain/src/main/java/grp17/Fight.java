@@ -19,14 +19,14 @@ public class Fight {
         double damage = 0;
         List<String> resume = new ArrayList<>();
         while(playerCard.getHero().getPv_hero() > 0 && opponentCard.getHero().getPv_hero() > 0) {
-            if(playerCard.getHero().getSpeciality().againstWhoSpe.equalsIgnoreCase(opponentCard.getHero().getSpeciality().name_spe)) {
-                damage = (playerCard.getHero().getSpeciality().power_spe *
-                        (1 + ((double) playerCard.getHero().getSpeciality().supPower_spe / 100))
+            if(playerCard.getHero().getSpeciality().getAgainstWhoSpe().equalsIgnoreCase(opponentCard.getHero().getSpeciality().getName_spe())) {
+                damage = (playerCard.getHero().getSpeciality().getPower_spe() *
+                        (1 + ((double) playerCard.getHero().getSpeciality().getSupPower_spe() / 100))
                         - opponentCard.getHero().getSpeciality().getArmor_spe()
                 );
                 opponentCard.getHero().setPv_hero((int) (opponentCard.getHero().getPv_hero() - damage));
             } else {
-                damage = (playerCard.getHero().getSpeciality().power_spe - opponentCard.getHero().getSpeciality().armor_spe);
+                damage = (playerCard.getHero().getSpeciality().getPower_spe() - opponentCard.getHero().getSpeciality().getArmor_spe());
                 opponentCard.getHero().setPv_hero((int) (opponentCard.getHero().getPv_hero() - damage));
             }
             resume.add("Le héros "+playerCard.getHero().getName_hero()+" a infligé "+damage+" points de dégâts au héro "+opponentCard.getHero().getName_hero());
@@ -35,22 +35,24 @@ public class Fight {
                 break;
             }
 
-            if(playerCard.getHero().getSpeciality().name_spe.equalsIgnoreCase(opponentCard.getHero().getSpeciality().againstWhoSpe.toUpperCase())) {
-                damage = (opponentCard.getHero().getSpeciality().power_spe *
-                        (1 + ((double) opponentCard.getHero().getSpeciality().supPower_spe / 100))
-                        - playerCard.getHero().getSpeciality().armor_spe
+            if(playerCard.getHero().getSpeciality().getName_spe().equalsIgnoreCase(opponentCard.getHero().getSpeciality().getAgainstWhoSpe().toUpperCase())) {
+                damage = (opponentCard.getHero().getSpeciality().getPower_spe() *
+                        (1 + ((double) opponentCard.getHero().getSpeciality().getSupPower_spe() / 100))
+                        - playerCard.getHero().getSpeciality().getArmor_spe()
                 );
                 playerCard.getHero().setPv_hero((int) (playerCard.getHero().getPv_hero() - damage));
             } else {
-                damage = (opponentCard.getHero().getSpeciality().power_spe - playerCard.getHero().getSpeciality().armor_spe);
+                damage = (opponentCard.getHero().getSpeciality().getPower_spe() - playerCard.getHero().getSpeciality().getArmor_spe());
                 playerCard.getHero().setPv_hero((int) (playerCard.getHero().getPv_hero() - damage));
             }
             resume.add("Le héros "+opponentCard.getHero().getName_hero()+" a infligé "+damage+" points de dégâts au héro "+playerCard.getHero().getName_hero());
         }
 
         if(playerCard.getHero().getPv_hero() > opponentCard.getHero().getPv_hero()) {
+            player.setToken(player.getToken()+1);
             resume.add("Le joueur "+player.getPseudo()+" a gagné");
         } else {
+            opponent.setToken(opponent.getToken()+1);
             resume.add("Le joueur "+opponent.getPseudo()+" a gagné");
         }
         winXP();

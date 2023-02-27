@@ -60,7 +60,7 @@ public class CardsController {
 
     private void saveCardInDB(String pack_type, List<String> lCardDB, PlayerDB p) {
         CardsDB cardsDB = new CardsDB();
-        e_Rarity rarity_card = cardsDB.opening(e_Pack.valueOf(pack_type.toUpperCase()));
+        e_Rarity rarity_card = cardsDB.getRarityOfCardByTypePack(e_Pack.valueOf(pack_type.toUpperCase()));
 
         List<AvailableCardsDB> lAvcDB = availableCardsRepo.findByRarity(rarity_card);
 

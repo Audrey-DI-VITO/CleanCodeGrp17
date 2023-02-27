@@ -15,35 +15,31 @@ public class Cards {
         this.rarity = rarity;
     }
 
-    public e_Rarity opening(e_Pack type) {
+    public e_Rarity getRarityOfCardByTypePack(e_Pack type) {
         SecureRandom sRand = new SecureRandom();
         Cards card = new Cards();
 
         switch(type) {
             case SILVER: {
-                for(int i = 1; i <= 3; i++) {
-                    int rand = sRand.nextInt(100) + 1;
-                    if(rand >= 1 && rand <= 5) {
-                        card.rarity = e_Rarity.LEGENDARY;
-                    } else if(rand >= 6 && rand <= 25) {
-                        card.rarity = e_Rarity.RARE;
-                    } else {
-                        card.rarity = e_Rarity.COMMON;
-                    }
+                int rand = sRand.nextInt(100) + 1;
+                if(rand >= 1 && rand <= 5) {
+                    card.rarity = e_Rarity.LEGENDARY;
+                } else if(rand >= 6 && rand <= 25) {
+                    card.rarity = e_Rarity.RARE;
+                } else {
+                    card.rarity = e_Rarity.COMMON;
                 }
                 break;
             }
 
             case DIAMOND: {
-                for(int i = 1; i <= 5; i++) {
-                    int rand = sRand.nextInt(100) + 1;
-                    if(rand >= 1 && rand <= 15) {
-                        card.rarity = e_Rarity.LEGENDARY;
-                    } else if(rand >= 16 && rand <= 36) {
-                        card.rarity = e_Rarity.RARE;
-                    } else {
-                        card.rarity = e_Rarity.COMMON;
-                    }
+                int rand = sRand.nextInt(100) + 1;
+                if(rand >= 1 && rand <= 15) {
+                    card.rarity = e_Rarity.LEGENDARY;
+                } else if(rand >= 16 && rand <= 36) {
+                    card.rarity = e_Rarity.RARE;
+                } else {
+                    card.rarity = e_Rarity.COMMON;
                 }
                 break;
             }
